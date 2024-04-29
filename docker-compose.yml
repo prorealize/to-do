@@ -1,0 +1,29 @@
+services:
+  todo:
+    extends:
+      file: ./to-do/docker-compose.yml
+      service: to-do
+    
+  # notification:
+  #   extends:
+  #     file: ./notification/docker-compose.yml
+  #     service: notification
+
+  db:
+    extends:
+      file: ./to-do/docker-compose.yml
+      service: db
+
+  load-balancer-to-do:
+    image: nginx:latest
+    ports:
+      - "8000:80"
+    volumes:
+      - ./load-balancer/nginx_to_do.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - todo
+
+  load-balancer-notification:
+    image: nginx:latest
+    volumes:
+      - ./load-balancer/nginx_notification.conf:/etc/nginx/nginx.conf

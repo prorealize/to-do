@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package notification;
+
+option go_package = "to-do/api/proto/notification";
+
+// The notification service definition.
+service NotificationService {
+  // Sends a notification
+  rpc SendNotification (NotificationRequest) returns (NotificationResponse);
+}
+
+// The request to send a notification
+message NotificationRequest {
+  string message = 1;
+}
+
+// The response to a notification request
+message NotificationResponse {
+  bool success = 1;
+  string status = 2;
+}

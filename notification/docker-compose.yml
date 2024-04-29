@@ -1,0 +1,7 @@
+services:
+  notification:
+    build: .
+    env_file:
+      - .env
+    deploy:
+      replicas: 2
