@@ -8,6 +8,7 @@ services:
       # with the value of the service name as
       # Docker Compose will resolve the service name
       - POSTGRES_HOST=db
+      - NOTIFICATION_HOST=notification
     deploy:
       replicas: 2
     depends_on:

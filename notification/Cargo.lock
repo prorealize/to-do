@@ -1338,7 +1338,7 @@ version = "0.1.0"
 dependencies = [
  "async-global-executor",
  "dotenv",
- "futures-lite 1.13.0",
+ "futures-lite 2.3.0",
  "lapin",
  "prost",
  "tokio",
