@@ -3,11 +3,13 @@ services:
     extends:
       file: ./to-do/docker-compose.yml
       service: to-do
+    depends_on:
+      - db
     
-  # notification:
-  #   extends:
-  #     file: ./notification/docker-compose.yml
-  #     service: notification
+  notification:
+    extends:
+      file: ./notification/docker-compose.yml
+      service: notification
 
   db:
     extends:
@@ -27,3 +29,5 @@ services:
     image: nginx:latest
     volumes:
       - ./load-balancer/nginx_notification.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - notification
